@@ -23,6 +23,7 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
+    "prepublishOnly": "pnpm build",
     "publish:dry-run": "pnpm build && npm publish --dry-run --access public",
     "test": "vitest run --passWithNoTests",
     "lint": "tsc --noEmit -p tsconfig.json"

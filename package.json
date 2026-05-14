@@ -22,11 +22,17 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
     "prepublishOnly": "pnpm build",
     "publish:dry-run": "pnpm build && npm publish --dry-run --access public",
     "test": "vitest run --passWithNoTests",
     "lint": "tsc --noEmit -p tsconfig.json"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "packageManager": "pnpm@10.8.1"
 }

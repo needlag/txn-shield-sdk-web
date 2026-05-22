@@ -22,7 +22,7 @@ const shield = createTxnShieldWeb({
 await shield.start();
 
 const prepared = await shield.prepareTransaction({
-  intent: "read_customer_pii",
+  operationKey: "customer.read_pii",
   resource: { type: "customer", id: "cus_1001" },
 });
 ```

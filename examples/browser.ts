@@ -9,7 +9,7 @@ await txnShield.start();
 
 export async function exportCustomer(customerId: string) {
   const prepared = await txnShield.prepareTransaction({
-    intent: "export_records",
+    operationKey: "invoice.export",
     resource: { type: "customer", id: customerId },
   });
 

@@ -22,17 +22,10 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
-    "prepublishOnly": "pnpm build",
+    "build": "../../node_modules/.bin/tsup src/index.ts --format esm,cjs --dts",
     "publish:dry-run": "pnpm build && npm publish --dry-run --access public",
-    "test": "vitest run --passWithNoTests",
-    "lint": "tsc --noEmit -p tsconfig.json"
+    "test": "../../node_modules/.bin/vitest run --passWithNoTests",
+    "lint": "../../node_modules/.bin/tsc --noEmit -p tsconfig.json"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
-  },
-  "packageManager": "pnpm@10.8.1"
+  "dependencies": {}
 }

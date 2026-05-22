@@ -5,7 +5,8 @@ type CreateTxnShieldWebOptions = {
 };
 
 type PrepareTransactionInput = {
-  intent: string;
+  operation?: string;
+  operationKey?: string;
   resource: { type: string; id: string };
   metadata?: Record<string, unknown>;
 };
@@ -102,13 +103,18 @@ export function createTxnShieldWeb(options: CreateTxnShieldWebOptions) {
       await start();
 
       const session = getSessionContext();
+      const operationKey = input.operationKey ?? input.operation;
+      if (!operationKey) {
+        throw new Error("TxnShield prepareTransaction requires operationKey.");
+      }
       return {
         ...input,
+        operationKey,
         session,
         headers: {
           "x-txnshield-session-id": session.sessionId,
           "x-txnshield-tab-id": session.tabId,
-          "x-txnshield-intent": input.intent,
+          "x-txnshield-operation-key": operationKey,
           "x-txnshield-recent-human-signal": session.recentHumanSignalAt ?? "",
         },
       };

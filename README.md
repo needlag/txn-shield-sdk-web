@@ -16,7 +16,7 @@ import { createTxnShieldWeb } from "@txnshield/sdk-web";
 
 const shield = createTxnShieldWeb({
   publishableKey: "txn_pub_...",
-  apiBaseUrl: "http://localhost:3000",
+  apiBaseUrl: "https://txnshield.com",
 });
 
 await shield.start();
